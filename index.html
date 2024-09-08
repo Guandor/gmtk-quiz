@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>GMTK - Video Game Culture Quiz</title>
+
+		<!-- SEO meta tags -->
+		<meta
+			name="description"
+			content="Test your video game culture based on GMTK's '100 Games That Taught Me Game Design' video."
+		/>
+		<meta name="keywords" content="video game, game design, culture test, GMTK, Game Maker's Toolkit" />
+		<meta name="author" content="Deniz Algin" />
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://gmtk.denizalgin.com" />
+		<meta property="og:title" content="GMTK Video Game Culture Quiz" />
+		<meta
+			property="og:description"
+			content="Test your video game culture. How many of these influential games have you played?"
+		/>
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://gmtk.denizalgin.com" />
+		<meta property="twitter:title" content="GMTK Video Game Culture Quiz" />
+		<meta
+			property="twitter:description"
+			content="Test your video game culture. How many of these influential games have you played?"
+		/>
+
+		<!-- Pico CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css" />
+		<!-- Custom CSS -->
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<h1>Video Game Culture Quiz</h1>
+				<p>
+					Based on the video
+					<a href="https://www.youtube.com/watch?v=gWNXGfXOrro">100 Games That Taught Me Game Design</a>
+					by Game Maker's Toolkit
+				</p>
+			</header>
+			<main>
+				<section id="game-container">
+					<article id="game-card" class="game-card">
+						Did you play
+						<h2 id="game-name"></h2>
+						<img id="game-image" class="game-image" src="" alt="Game cover" loading="lazy" />
+					</article>
+					<div class="button-container">
+						<button id="no-button">No (←)</button>
+						<button id="yes-button">Yes (→)</button>
+					</div>
+					<div class="progress-container">
+						<progress id="progress" value="0" max="100"></progress>
+						<span id="progress-text"></span>
+					</div>
+					<div id="result" class="result-container" style="display: none">
+						<h2>Results</h2>
+						<p id="result-text"></p>
+					</div>
+				</section>
+			</main>
+			<footer>
+				Made by
+				<a href="https://denizalgin.com">Deniz</a>
+				🧙‍♂️ - Open source at <a href="https://github.com/Guandor/gmtk-quiz">GitHub</a>
+			</footer>
+		</div>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+		<script src="script.js"></script>
+	</body>
+</html>
