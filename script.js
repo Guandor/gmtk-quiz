@@ -10,6 +10,7 @@ const DOM = {
 	gameCard: document.getElementById('game-card'),
 	gameName: document.getElementById('game-name'),
 	gameImage: document.getElementById('game-image'),
+	gameFooter: document.getElementById('game-footer'),
 	progress: document.getElementById('progress'),
 	progressText: document.getElementById('progress-text'),
 	result: document.getElementById('result'),
@@ -22,7 +23,9 @@ async function loadGames() {
 	try {
 		const response = await fetch('games.json');
 		state.games = await response.json();
-		//state.games = state.games.slice(0, 5);
+		if (window.location.origin === 'http://127.0.0.1:5500') { //for faster debug
+			state.games = state.games.slice(0, 5);
+		}
 		showGame();
 	} catch (error) {
 		console.error('Error loading games:', error);
@@ -82,10 +85,7 @@ function updateProgressBar() {
 function showResult() {
 	DOM.header.style.display = 'none';
 	DOM.gameCard.style.display = 'none';
-	DOM.progress.style.display = 'none';
-	DOM.progressText.style.display = 'none';
-	DOM.noButton.style.display = 'none';
-	DOM.yesButton.style.display = 'none';
+	DOM.gameFooter.style.display = 'none';
 
 	DOM.result.style.display = 'block';
 	DOM.resultText.innerHTML = `
