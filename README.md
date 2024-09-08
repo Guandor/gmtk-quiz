@@ -1,6 +1,6 @@
 # GMTK Video Game Culture Quiz
 
-This project is an interactive web-based quiz that tests your video game culture knowledge based on the video "100 Games That Taught Me Game Design" by Game Maker's Toolkit (GMTK). It's not affiliated with GTMK at all. It's just a hobby project.
+This project is an interactive web-based quiz that tests your video game culture knowledge based on the video "100 Games That Taught Me Game Design" by Game Maker's Toolkit (GMTK). It's not affiliated with GMTK at all. It's just a hobby project.
 
 If you're not interested in the code at all, just click [here](https://gmtk.denizalgin.com/) to see the quiz. 
 
