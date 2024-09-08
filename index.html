@@ -39,7 +39,7 @@
 	<body>
 		<div class="container">
 			<header>
-				<h1>Video Game Culture Quiz</h1>
+				<h3>Video Game Culture Quiz</h3>
 				<p>
 					Based on the video
 					<a href="https://www.youtube.com/watch?v=gWNXGfXOrro">100 Games That Taught Me Game Design</a>
@@ -50,9 +50,11 @@
 				<section id="game-container">
 					<article id="game-card" class="game-card">
 						Did you play
-						<h2 id="game-name"></h2>
+						<h4 id="game-name"></h4>
 						<img id="game-image" class="game-image" src="" alt="Game cover" loading="lazy" />
 					</article>
+				</section>
+				<section id="game-footer">
 					<div class="button-container">
 						<button id="no-button">No (←)</button>
 						<button id="yes-button">Yes (→)</button>
@@ -61,17 +63,20 @@
 						<progress id="progress" value="0" max="100"></progress>
 						<span id="progress-text"></span>
 					</div>
-					<div id="result" class="result-container" style="display: none">
-						<h2>Results</h2>
-						<p id="result-text"></p>
+					<div>
+						Made by
+						<a href="https://denizalgin.com">Deniz</a>
+						🧙‍♂️ - Open source at
+						<a href="https://github.com/Guandor/gmtk-quiz">GitHub</a>
 					</div>
 				</section>
+
+				<section id="result" class="result-container" style="display: none">
+					<h2>Results</h2>
+					<p id="result-text"></p>
+					<button onclick="exportAsCSV()">Download as CSV</button>
+				</section>
 			</main>
-			<footer>
-				Made by
-				<a href="https://denizalgin.com">Deniz</a>
-				🧙‍♂️ - Open source at <a href="https://github.com/Guandor/gmtk-quiz">GitHub</a>
-			</footer>
 		</div>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 		<script src="script.js"></script>

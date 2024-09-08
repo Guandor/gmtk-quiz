@@ -22,6 +22,7 @@ async function loadGames() {
 	try {
 		const response = await fetch('games.json');
 		state.games = await response.json();
+		state.games = state.games.slice(0, 5);
 		showGame();
 	} catch (error) {
 		console.error('Error loading games:', error);
@@ -51,11 +52,16 @@ function rateGame(rating) {
 	const direction = rating === 'yes' ? 'right' : 'left';
 	animateSwipe(direction);
 
-	if (rating === 'yes') state.yesCount++;
+	if (rating === 'yes') {
+		state.yesCount++;
+		state.games[state.currentIndex].is_played = true;
+	} else {
+		state.games[state.currentIndex].is_played = false;
+	}
 	state.currentIndex++;
 
 	setTimeout(() => {
-		DOM.gameCard.style.display = 'none';
+		//DOM.gameCard.style.display = 'none';
 		DOM.gameCard.style.opacity = 0;
 		DOM.gameCard.style.transform = 'none';
 		if (state.currentIndex >= state.games.length) {
@@ -82,9 +88,39 @@ function showResult() {
 	DOM.yesButton.style.display = 'none';
 
 	DOM.result.style.display = 'block';
-	DOM.resultText.textContent = `
-      You played ${state.yesCount} out of ${state.games.length} games.
+	DOM.resultText.innerHTML = `
+      You played ${state.yesCount} out of ${state.games.length} games. <br />
     `;
+
+	played = state.games.filter((game) => game.is_played);
+	non_played = state.games.filter((game) => !game.is_played);
+	played.forEach((game) => {
+		DOM.resultText.innerHTML += `<br />✅ ${game.name}`;
+	});
+	non_played.forEach((game) => {
+		DOM.resultText.innerHTML += `<br />⛔ ${game.name}`;
+	});
+}
+
+function exportAsCSV() {
+	const headers = ['Game Name', 'Played'];
+	const csvContent = [
+		'sep=;',
+		headers.join(';'),
+		...state.games.map((game) => `"${game.name}";${game.is_played}`),
+	].join('\n');
+
+	const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+	const link = document.createElement('a');
+	if (navigator.msSaveBlob) {
+		navigator.msSaveBlob(blob, 'game_results.csv');
+	} else {
+		link.href = URL.createObjectURL(blob);
+		link.setAttribute('download', 'game_results.csv');
+		document.body.appendChild(link);
+		link.click();
+		document.body.removeChild(link);
+	}
 }
 
 function animateSwipe(direction) {
