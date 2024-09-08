@@ -22,7 +22,7 @@ async function loadGames() {
 	try {
 		const response = await fetch('games.json');
 		state.games = await response.json();
-		state.games = state.games.slice(0, 5);
+		//state.games = state.games.slice(0, 5);
 		showGame();
 	} catch (error) {
 		console.error('Error loading games:', error);
